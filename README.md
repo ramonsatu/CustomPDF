@@ -237,7 +237,7 @@ Quando a operação do metódo "writeTo(FileOutputStream(filePDF))" acabar, deve
 # Fun insertFileInMediaStore(filePDF, pdfFileName, context)
 Esta função é resposável por inserir o arquivo gerado no MediaStore dependedo da versão do android.
 
-# Fun goToFileDirectory(context, activity)
+# Fun goToFileDirectory(activity)
 Esta função redireciona o usuário para pasta Download, caso haja algum recurso capaz de lidar com a Intent.
 
 # Preciso de permissões?
