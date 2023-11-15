@@ -10,13 +10,17 @@ Use este projeto como desejar. Contribuições são bem vindas.
 # O necessário
 O necessário para criar o seu primeiro PDF :
 
-    private val pageHeight = 842
-    private val pageWidth = 595
-    private var gridPageNumber = 0
-    private var pdfDocument: PdfDocument? = PdfDocument()
-    private var paint: Paint? = Paint()
-    private var line: Paint? = Paint()
-    private lateinit var pageInfo: PdfDocument.PageInfo
+    class PDFGenerator {
+       private val pageHeight = 842
+       private val pageWidth = 595
+       private var gridPageNumber = 0
+       private var pdfDocument: PdfDocument? = PdfDocument()
+       private var paint: Paint? = Paint()
+       private var line: Paint? = Paint()
+       private lateinit var pageInfo: PdfDocument.PageInfo
+       ...
+
+    }
 
 Depois de alocar esses recusos dentro de uma classe , você pode alterar alguns atributos das isntâncias da Classe Paint dentro do bloco init ou dentro do escopo da função.
 
