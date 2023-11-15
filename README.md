@@ -157,7 +157,7 @@ Após passamos de forma senquencial pela estrutura anterior chegamos no laço an
                      ...
                 }
             }
-O impotante é ter em mente a lógica da ordenação das estruturas de repetição e de condição.
+O impotante é ter em mente a lógica de ordenação das estruturas de repetição e de condição. O que estar dentro delas vai mudar de acordo com a necessidade da implementação.
 No final da estrutura do laço principal você deve fechar cada página.
 
             for (indexPageNumber in 0 until gridPageNumber step 1) {
@@ -182,6 +182,7 @@ No final da estrutura do laço principal você deve fechar cada página.
                    ...
                 }      
             }
+            //Encerrando a página que corresponde ao índice atual
             pdfDocument!!.finishPage(myPage)
         }
 
@@ -194,7 +195,7 @@ Agora que já temos as páginas preenchidas , precisamos informar para instânci
         // Nome do arquivo pdf
         val pdfFileName = context.getString(R.string.tos_blank_subject_grid)
         
-        // public File(File parent, String child )
+        // public File(File parent, String child ) , recebe o Path como retorno da função getPathFile("/TOS-PDFs", context) .
         val filePDF = File(getPathFile("/TOS-PDFs", context), pdfFileName)
 
         try {
