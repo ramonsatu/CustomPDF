@@ -36,7 +36,7 @@ import java.util.TimeZone
 
 
 /**
- * You must edit the chart in the XML file.
+ * Custom PDF.
  *
  * @property pageHeight represents the height of the page.
  * @property pageWidth represents the width of the page.
@@ -50,6 +50,7 @@ import java.util.TimeZone
  * @author Ramon Satu
  */
 class PDFGenerator {
+
     private val pageHeight = 842
     private val pageWidth = 595
     private var gridPageNumber = 0
@@ -118,13 +119,15 @@ class PDFGenerator {
         //create page information
         pageInfo = PdfDocument.PageInfo.Builder(pageHeight, pageWidth, gridPageNumber).create()
 
+
+
         for (indexPageNumber in 0 until gridPageNumber step 1) {
 
             //set page information
             val myPage: PdfDocument.Page = pdfDocument!!.startPage(pageInfo)
-
             // creating a variable for canvas
             val canvas = myPage.canvas
+
 
             //--------page-01-Header------------
             if (indexPageNumber == 0) {
@@ -156,14 +159,11 @@ class PDFGenerator {
             //-------------Table----------------
             paint.typeface = Typeface.create(Typeface.DEFAULT, Typeface.NORMAL)
             paint.textAlign = Paint.Align.CENTER
-
-
-            var constY = 0
-            var constYTitle = 0
-
             paint.color =
                 ContextCompat.getColor(context, R.color.black)
 
+            var constY = 0
+            var constYTitle = 0
             for (index in 0 until subjectListSize step 1) {
 
                 if (index == 0) {
@@ -366,10 +366,7 @@ class PDFGenerator {
 
         insertFileInMediaStore(filePDF, pdfFileName, context)
 
-
-
-
-        goToFileDirectory(context, activity)
+        goToFileDirectory(activity)
 
 
     }
@@ -412,13 +409,14 @@ class PDFGenerator {
      * Redirects the user to the Download folder.
      */
     @SuppressLint("QueryPermissionsNeeded")
-    private fun goToFileDirectory(context: Context, activity: AppCompatActivity) {
+    private fun goToFileDirectory(activity: AppCompatActivity) {
 
         val intentPdf = Intent()
+
         intentPdf.action = DownloadManager.ACTION_VIEW_DOWNLOADS
         val activityExists =
             intentPdf.resolveActivityInfo(
-                context.packageManager,
+                activity.packageManager,
                 0
             ) != null
 
