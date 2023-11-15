@@ -11,16 +11,16 @@ import androidx.fragment.app.DialogFragment
 import com.ramonpsatu.custompdf.R
 import com.ramonpsatu.custompdf.databinding.FragmentCustomDialogBinding
 
-class CustomDialogFragment(private val intent: Intent, private val condition: Boolean): DialogFragment() {
+class CustomDialogFragment(private  val intent: Intent, private val condition: Boolean): DialogFragment() {
     companion object {
-        const val TAG = "logOutDialogFragment"
+        const val TAG = "CustomDialogFragment"
     }
 
     private var _binding: FragmentCustomDialogBinding? = null
     private val binding get() = _binding!!
 
 
-    override fun onCreateView(
+   override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,7 +56,9 @@ class CustomDialogFragment(private val intent: Intent, private val condition: Bo
         }
 
         binding.tbnSignOutYes.setOnClickListener {
-            requireActivity().startActivity(intent)
+            if (condition){
+                requireActivity().startActivity(intent)
+            }
             this.dismiss()
         }
 
