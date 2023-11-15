@@ -1,5 +1,5 @@
 # CustomPDF
-Este projeto contém uma implementação da classe PDFDocument do pacote android.graphics.pdf e da classe Paint do pacote android.graphics em conjunto com outros recursos
+Este projeto contem uma implementação da classe PDFDocument do pacote android.graphics.pdf e da classe Paint do pacote android.graphics em conjunto com outros recursos
 para gerar a grade de matérias a seguir:
 
 ![image](https://github.com/ramonsatu/CustomPDF/assets/117767174/0a944431-e34a-474b-8694-3c0fb73679de)
@@ -47,7 +47,7 @@ Dentro do escopo da função responsável por conter a lógica estrutural do pdf
         pageInfo = PdfDocument.PageInfo.Builder(pageHeight, pageWidth, gridPageNumber).create()
 
     
-Ao atribuir a chamada "PdfDocument.PageInfo.Builder(pageHeight, pageWidth, gridPageNumber).create()" a pagInfo é preciso repassar 3 valores INTEIROS como parâmetros do método "Builder".
+Ao atribuir a chamada "PdfDocument.PageInfo.Builder(pageHeight, pageWidth, gridPageNumber).create()" a pagInfo é preciso repassar 3 valores INTEIROS como parâmetros para o método "Builder".
 Se o seu PDF tem um tamanho fixo, perfeito, basta inserir o valor direto. Mas se você trabalha com uma lista de tamanho igual a n, é preciso fazer o seu cálculo para que o resultado sempre tenha um valor com pelo menos uma parte intera.
 
 Se você estar se perguntando :
@@ -90,7 +90,7 @@ Agora fica claro que somando 1 ao resultado da divisão, garantimos que as linha
 
 
 # Preenchendo as páginas
-Agora que defimos como passar o número de paginas para o "PdfDocument.PageInfo.Builder()", vamos utilizá-lo para definir o números de iterações que termos na primeira estrutura de laço.
+Agora que defimos como passar o número de páginas para o "PdfDocument.PageInfo.Builder()", vamos utilizá-lo para definir o números de iterações que termos na primeira estrutura de laço.
 
       for (indexPageNumber in 0 until gridPageNumber step 1) {
             //set page information
@@ -104,7 +104,11 @@ Perceba que no início de cada iteração, iniciamos "myPage" com a instância d
            
             val myPage: PdfDocument.Page = pdfDocument!!.startPage(pageInfo)
 
-Logo em seguida temos acesso ao objecto canvas que permitirá a nos ter acessar os métodos responsáveis por desenhar na tela.
+Logo em seguida temos acesso ao objeto canvas e aos métodos responsáveis por desenhar na tela.
+
+      val canvas = myPage.canvas
+
+Métodos:
 
      //Desenha um bitmap
      canvas.drawBitmap(bitmap, left, top, paint)
@@ -176,4 +180,70 @@ No final da estrutura do laço principal você deve fechar cada página.
             }
             pdfDocument!!.finishPage(myPage)
         }
-atualizando....
+
+# Definindo o Path
+Agora que já temos as páginas preenchidas , precisamos informar para instância do PDfDocument o caminho onde o nosso arquivo deve ser escrito.
+
+    for (indexPageNumber in 0 until gridPageNumber step 1) {
+         ...
+        }
+        // Nome do arquivo pdf
+        val pdfFileName = context.getString(R.string.tos_blank_subject_grid)
+        
+        // public File(File parent, String child )
+        val filePDF = File(getPathFile("/TOS-PDFs", context), pdfFileName)
+
+        try {
+            withContext(Dispatchers.IO) {
+                pdfDocument!!.writeTo(FileOutputStream(filePDF))
+            }
+        } catch (ex: IOException) {
+            ex.printStackTrace()
+        }  
+        
+Ao atribuimos "File(getPathFile("/TOS-PDFs", context), pdfFileName)" a filePDF, estamos definindo um caminho específico para o arquivo.
+Na estrutura try{}catch{}, estamos acessando o método responsável por escrever o nosso arquivo no caminho que foi definido dentro da função "getPathFile("/TOS-PDFs", context)".
+Quando a operação do metódo "writeTo(FileOutputStream(filePDF))" acabar, devemos fechar a instância do PDFDocument e desalocar os recursos.
+
+            for (indexPageNumber in 0 until gridPageNumber step 1) {
+         ...
+        }
+        // Nome do arquivo pdf
+        val pdfFileName = context.getString(R.string.tos_blank_subject_grid)
+        
+        // public File(File parent, String child )
+        val filePDF = File(getPathFile("/TOS-PDFs", context), pdfFileName)
+
+        try {
+            withContext(Dispatchers.IO) {
+                pdfDocument!!.writeTo(FileOutputStream(filePDF))
+            }
+        } catch (ex: IOException) {
+            ex.printStackTrace()
+        } 
+
+        pdfDocument!!.close()
+        pdfDocument = null
+        this.paint = null
+        this.line = null
+
+        insertFileInMediaStore(filePDF, pdfFileName, context)
+
+        goToFileDirectory(context, activity)
+
+
+    }
+
+# Fun insertFileInMediaStore(filePDF, pdfFileName, context)
+Esta função é resposável por inserir o arquivo gerado no MediaStore dependedo da versão do android.
+
+# Fun goToFileDirectory(context, activity)
+Esta função redireciona o usuário para pasta Download, caso haja algum recurso capaz de lidar com a intent.
+
+# Preciso de permissões?
+Dependendo da versão da API do android você que solicitar ao usuário as permissões a seguir:
+
+                Manifest.permission.READ_EXTERNAL_STORAGE
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+
+Dentro desse projeto existe esse tratamento, caso queira explorar.
