@@ -229,7 +229,7 @@ Quando a operação do metódo "writeTo(FileOutputStream(filePDF))" acabar, deve
 
         insertFileInMediaStore(filePDF, pdfFileName, context)
 
-        goToFileDirectory(context, activity)
+        goToFileDirectory(activity)
 
 
     }
