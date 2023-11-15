@@ -241,7 +241,7 @@ Esta função é resposável por inserir o arquivo gerado no MediaStore depended
 Esta função redireciona o usuário para pasta Download, caso haja algum recurso capaz de lidar com a intent.
 
 # Preciso de permissões?
-Dependendo da versão da API do android você que solicitar ao usuário as permissões a seguir:
+Dependendo da versão da API do android você deve solicitar ao usuário as permissões a seguir:
 
                 Manifest.permission.READ_EXTERNAL_STORAGE
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
