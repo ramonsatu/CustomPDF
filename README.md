@@ -238,7 +238,7 @@ Quando a operação do metódo "writeTo(FileOutputStream(filePDF))" acabar, deve
 Esta função é resposável por inserir o arquivo gerado no MediaStore dependedo da versão do android.
 
 # Fun goToFileDirectory(context, activity)
-Esta função redireciona o usuário para pasta Download, caso haja algum recurso capaz de lidar com a intent.
+Esta função redireciona o usuário para pasta Download, caso haja algum recurso capaz de lidar com a Intent.
 
 # Preciso de permissões?
 Dependendo da versão da API do android você deve solicitar ao usuário as permissões a seguir:
@@ -246,4 +246,4 @@ Dependendo da versão da API do android você deve solicitar ao usuário as perm
                 Manifest.permission.READ_EXTERNAL_STORAGE
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
 
-Dentro desse projeto existe esse tratamento, caso queira explorar.
+Dentro do projeto existe este tratamento, caso queira explorar.
