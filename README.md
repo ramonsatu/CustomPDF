@@ -122,7 +122,15 @@ Métodos:
 
      //Desenha linhas
      canvas.drawLine(start x, start y, stop x, stop y, paint)
+
      
+
+Tenha em mente que você desenhará dentro de um plano cartesiano.
+
+![image](https://github.com/ramonsatu/CustomPDF/assets/117767174/4679a71d-1368-4e05-b020-eb166d43789b)
+
+
+
 Dentro da nossa primeira estrutura condicional nos desenhamos o cabeçalho do PDF:
 
              //--------page-01-Header------------
@@ -185,7 +193,6 @@ No final da estrutura do laço principal você deve fechar cada página.
             //Encerrando a página que corresponde ao índice atual
             pdfDocument!!.finishPage(myPage)
         }
-
 # Definindo o Path
 Agora que já temos as páginas preenchidas , precisamos informar para instância do PDfDocument o caminho onde o nosso arquivo deve ser escrito.
 
