@@ -94,7 +94,7 @@ Agora fica claro que somando 1 ao resultado da divisão, garantimos que as linha
 
 
 # Preenchendo as páginas
-Agora que defimos como passar o número de páginas para o "PdfDocument.PageInfo.Builder()", vamos utilizá-lo para definir o números de iterações que termos na primeira estrutura de laço.
+Agora que defimos como passar o número de páginas para o "PdfDocument.PageInfo.Builder()", vamos utilizá-lo para definir o número de iterações que termos na primeira estrutura de laço.
 
       for (indexPageNumber in 0 until gridPageNumber step 1) {
             //set page information
