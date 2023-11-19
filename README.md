@@ -56,13 +56,13 @@ Se o seu PDF tem um tamanho fixo, perfeito, basta inserir o valor direto. Mas se
 
 Se você estar se perguntando :
 
-  -Tudo bem , mas por qual motivo o tamanho da lista é dividido por 6 e somado a  1?
+-Tudo bem , mas por qual motivo o tamanho da lista é dividido por 6 e somado a  1?
 
-Divido por 6?
+-Divido por 6?
 
 Foi definido ter , no máximo, 6 linhas na grade por página.
 
-Somado a 1?
+-Somado a 1?
 
 Como a lista possui um tamanho n, poderiamos ter  n = 1. Logo, teriamos um valor que não possui uma parte inteira.
 
@@ -74,17 +74,17 @@ Ex:
         
 No exemplo anterior, garantimos que o builder vai criar, pelo menos, uma página para o PDF.
 
-Se o tamanho for 6?
+-Se o tamanho for 6?
 
 Ex:
 
 ( 6 / 6 ) = 1  
 
-  -Tudo certo, então?
+-Tudo certo, então?
 
-Não. Lembra da imagem no início? Nela só cabem 5 linhas na grade. Fica sobrando uma linha. 
+Não. Lembra da imagem no início? Nela só cabem 5 linhas na primeira página. Fica sobrando uma linha. 
 
-O que faremos? 
+-O que faremos? 
     
 ( 6 / 6 ) = 1
    
