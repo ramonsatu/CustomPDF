@@ -124,35 +124,35 @@ class PDFGenerator {
         for (indexPageNumber in 0 until gridPageNumber step 1) {
 
             //set page information
-            val myPage: PdfDocument.Page = pdfDocument!!.startPage(pageInfo)
+            val myPage: PdfDocument.Page? = pdfDocument?.startPage(pageInfo)
             // creating a variable for canvas
-            val canvas = myPage.canvas
+            val canvas = myPage?.canvas
 
 
             //--------page-01-Header------------
             if (indexPageNumber == 0) {
 
-                canvas.drawBitmap(bitmapLogoScaled, 25f, 40f, paint)
+                canvas?.drawBitmap(bitmapLogoScaled, 25f, 40f, paint)
 
                 paint.typeface = Typeface.create(Typeface.DEFAULT, Typeface.NORMAL)
                 paint.textSize = 18F
                 paint.color =
                     ContextCompat.getColor(context, R.color.black)
                 paint.textAlign = Paint.Align.LEFT
-                canvas.drawText(tosPhrase, 104f, 60f, paint)
+                canvas?.drawText(tosPhrase, 104f, 60f, paint)
 
                 paint.textSize = 14F
-                canvas.drawText(date, 104f, 85f, paint)
+                canvas?.drawText(date, 104f, 85f, paint)
                 paint.textAlign = Paint.Align.RIGHT
 
-                canvas.drawText(amountOfPhrase, 783f, 145f, paint)
+                canvas?.drawText(amountOfPhrase, 783f, 145f, paint)
 
                 paint.typeface = Typeface.defaultFromStyle(Typeface.NORMAL)
                 paint.textSize = 24F
                 paint.color =
                     ContextCompat.getColor(context, R.color.black)
                 paint.textAlign = Paint.Align.CENTER
-                canvas.drawText(subjectsWord, 421f, 120f, paint)
+                canvas?.drawText(subjectsWord, 421f, 120f, paint)
 
             }
 
@@ -183,92 +183,92 @@ class PDFGenerator {
 
 
                     //Draws the lines from left to right of the table
-                    canvas.drawLine(91f, 260f + constY, 817f, 260f + constY, line)
+                    canvas?.drawLine(91f, 260f + constY, 817f, 260f + constY, line)
                     //Draws the lines from top to bottom of the table
-                    canvas.drawLine(26f, 180f + constY, 26f, 260f + constY, line)
-                    canvas.drawLine(91f, 180f + constY, 91f, 260f + constY, line)
-                    canvas.drawLine(196f, 180f + constY, 196f, 260f + constY, line)
-                    canvas.drawLine(303f, 180f + constY, 303f, 260f + constY, line)
-                    canvas.drawLine(410f, 180f + constY, 410f, 260f + constY, line)
-                    canvas.drawLine(516f, 180f + constY, 516f, 260f + constY, line)
-                    canvas.drawLine(623f, 180f + constY, 623f, 260f + constY, line)
-                    canvas.drawLine(719f, 180f + constY, 719f, 260f + constY, line)
-                    canvas.drawLine(816f, 180f + constY, 816f, 260f + constY, line)
+                    canvas?.drawLine(26f, 180f + constY, 26f, 260f + constY, line)
+                    canvas?.drawLine(91f, 180f + constY, 91f, 260f + constY, line)
+                    canvas?.drawLine(196f, 180f + constY, 196f, 260f + constY, line)
+                    canvas?.drawLine(303f, 180f + constY, 303f, 260f + constY, line)
+                    canvas?.drawLine(410f, 180f + constY, 410f, 260f + constY, line)
+                    canvas?.drawLine(516f, 180f + constY, 516f, 260f + constY, line)
+                    canvas?.drawLine(623f, 180f + constY, 623f, 260f + constY, line)
+                    canvas?.drawLine(719f, 180f + constY, 719f, 260f + constY, line)
+                    canvas?.drawLine(816f, 180f + constY, 816f, 260f + constY, line)
 
 
                     //Draw table header
                     if (index == 0) {
 
                         paint.textSize = 16F
-                        canvas.drawText(
+                        canvas?.drawText(
                             context.getString(R.string.text_period_word),
                             58f,
                             175f,
                             paint
                         )
-                        canvas.drawText(
+                        canvas?.drawText(
                             context.getString(R.string.text_day_monday_form),
                             142f,
                             175f,
                             paint
                         )
-                        canvas.drawText(
+                        canvas?.drawText(
                             context.getString(R.string.text_day_tuesday_form),
                             249f,
                             175f,
                             paint
                         )
-                        canvas.drawText(
+                        canvas?.drawText(
                             context.getString(R.string.text_day_wednesday_form),
                             355f,
                             175f,
                             paint
                         )
-                        canvas.drawText(
+                        canvas?.drawText(
                             context.getString(R.string.text_day_thursday_form),
                             463f,
                             175f,
                             paint
                         )
-                        canvas.drawText(
+                        canvas?.drawText(
                             context.getString(R.string.text_day_friday_form),
                             569f,
                             175f,
                             paint
                         )
-                        canvas.drawText(
+                        canvas?.drawText(
                             context.getString(R.string.text_day_saturday_form),
                             671f,
                             175f,
                             paint
                         )
-                        canvas.drawText(
+                        canvas?.drawText(
                             context.getString(R.string.text_day_sunday_form),
                             768f,
                             175f,
                             paint
                         )
-                        canvas.drawLine(25f, 150f, 817f, 150f, line)
-                        canvas.drawLine(25f, 180f, 817f, 180f, line)
+                        canvas?.drawLine(25f, 150f, 817f, 150f, line)
+                        canvas?.drawLine(25f, 180f, 817f, 180f, line)
 
                         //Draws the lines from top to bottom of the table
-                        canvas.drawLine(26f, 150f, 26f, 180f, line)
-                        canvas.drawLine(91f, 150f, 91f, 180f, line)
-                        canvas.drawLine(196f, 150f, 196f, 180f, line)
-                        canvas.drawLine(303f, 150f, 303f, 180f, line)
-                        canvas.drawLine(410f, 150f, 410f, 180f, line)
-                        canvas.drawLine(516f, 150f, 516f, 180f, line)
-                        canvas.drawLine(623f, 150f, 623f, 180f, line)
-                        canvas.drawLine(719f, 150f, 719f, 180f, line)
-                        canvas.drawLine(816f, 150f, 816f, 180f, line)
+                        canvas?.drawLine(26f, 150f, 26f, 180f, line)
+                        canvas?.drawLine(91f, 150f, 91f, 180f, line)
+                        canvas?.drawLine(196f, 150f, 196f, 180f, line)
+                        canvas?.drawLine(303f, 150f, 303f, 180f, line)
+                        canvas?.drawLine(410f, 150f, 410f, 180f, line)
+                        canvas?.drawLine(516f, 150f, 516f, 180f, line)
+                        canvas?.drawLine(623f, 150f, 623f, 180f, line)
+                        canvas?.drawLine(719f, 150f, 719f, 180f, line)
+                        canvas?.drawLine(816f, 150f, 816f, 180f, line)
 
                         //Draw page number
                         paint.textSize = 12F
-                        canvas.drawText((indexPageNumber + 1).toString(), 802f, 38f, paint)
+                        canvas?.drawText((indexPageNumber + 1).toString(), 802f, 38f, paint)
                     }
 
                     if (subjectListSizeAid == 0 || (subjectListSizeAid > 0 && index == 4)) {
-                        canvas.drawLine(25f, 260f + constY, 91f, 260f + constY, line)
+                        canvas?.drawLine(25f, 260f + constY, 91f, 260f + constY, line)
                     }
 
 
@@ -287,36 +287,36 @@ class PDFGenerator {
                         constY = 0
 
                         // The First top row of cells
-                        canvas.drawLine(25f, 60f + constY, 817f, 60f + constY, line)
+                        canvas?.drawLine(25f, 60f + constY, 817f, 60f + constY, line)
 
                         //Draw page number
                         paint.textSize = 12F
-                        canvas.drawText((indexPageNumber + 1).toString(), 802f, 38f, paint)
+                        canvas?.drawText((indexPageNumber + 1).toString(), 802f, 38f, paint)
 
                     }
 
                     // Draws the lines from left to right of the table
-                    canvas.drawLine(91f, 140f + constY, 817f, 140f + constY, line)
+                    canvas?.drawLine(91f, 140f + constY, 817f, 140f + constY, line)
                     //Draws the lines from top to bottom of the table
-                    canvas.drawLine(26f, 60f + constY, 26f, 140f + constY, line)
-                    canvas.drawLine(91f, 60f + constY, 91f, 140f + constY, line)
-                    canvas.drawLine(196f, 60f + constY, 196f, 140f + constY, line)
-                    canvas.drawLine(303f, 60f + constY, 303f, 140f + constY, line)
-                    canvas.drawLine(410f, 60f + constY, 410f, 140f + constY, line)
-                    canvas.drawLine(516f, 60f + constY, 516f, 140f + constY, line)
-                    canvas.drawLine(623f, 60f + constY, 623f, 140f + constY, line)
-                    canvas.drawLine(719f, 60f + constY, 719f, 140f + constY, line)
-                    canvas.drawLine(816f, 60f + constY, 816f, 140f + constY, line)
+                    canvas?.drawLine(26f, 60f + constY, 26f, 140f + constY, line)
+                    canvas?.drawLine(91f, 60f + constY, 91f, 140f + constY, line)
+                    canvas?.drawLine(196f, 60f + constY, 196f, 140f + constY, line)
+                    canvas?.drawLine(303f, 60f + constY, 303f, 140f + constY, line)
+                    canvas?.drawLine(410f, 60f + constY, 410f, 140f + constY, line)
+                    canvas?.drawLine(516f, 60f + constY, 516f, 140f + constY, line)
+                    canvas?.drawLine(623f, 60f + constY, 623f, 140f + constY, line)
+                    canvas?.drawLine(719f, 60f + constY, 719f, 140f + constY, line)
+                    canvas?.drawLine(816f, 60f + constY, 816f, 140f + constY, line)
 
 
                     //Bottom row of period cell when page list size is less than 6
                     if (subjectListSizeAid == 0) {
-                        canvas.drawLine(25f, 140f + constY, 91f, 140f + constY, line)
+                        canvas?.drawLine(25f, 140f + constY, 91f, 140f + constY, line)
                     }
 
                     //Bottom row of period cell when page list size equals than 6
                     if (subjectListSizeAid == 0 || (subjectListSizeAid > 0 && index == indexMax)) {
-                        canvas.drawLine(25f, 140f + constY, 91f, 140f + constY, line)
+                        canvas?.drawLine(25f, 140f + constY, 91f, 140f + constY, line)
                     }
 
                     if (index == (indexMax)) {
@@ -330,7 +330,7 @@ class PDFGenerator {
 
             }
 
-            pdfDocument!!.finishPage(myPage)
+            pdfDocument?.finishPage(myPage)
 
 
         }
@@ -342,7 +342,7 @@ class PDFGenerator {
 
         try {
             withContext(Dispatchers.IO) {
-                pdfDocument!!.writeTo(FileOutputStream(filePDF))
+                pdfDocument?.writeTo(FileOutputStream(filePDF))
 
             }
 
@@ -358,7 +358,7 @@ class PDFGenerator {
 
         }
 
-        pdfDocument!!.close()
+        pdfDocument?.close()
         pdfDocument = null
         this.paint = null
         this.line = null
@@ -467,19 +467,19 @@ class PDFGenerator {
                 withContext(Dispatchers.IO) {
 
                     try {
-                        val outputStream: OutputStream = contentResolver.openOutputStream(uri)!!
+                        val outputStream: OutputStream? = contentResolver.openOutputStream(uri)
                         val inputStream: InputStream = FileInputStream(filePDF)
 
                         val buffer = ByteArray(1024)
                         var bytesRead: Int
 
                         while (inputStream.read(buffer).also { bytesRead = it } != -1) {
-                            outputStream.write(buffer, 0, bytesRead)
+                            outputStream?.write(buffer, 0, bytesRead)
                         }
 
-                        outputStream.flush()
+                        outputStream?.flush()
                         inputStream.close()
-                        outputStream.close()
+                        outputStream?.close()
 
                     } catch (e: IOException) {
                         e.printStackTrace()
