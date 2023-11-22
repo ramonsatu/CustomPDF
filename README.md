@@ -56,13 +56,13 @@ Se o seu PDF tem um tamanho fixo, perfeito, basta inserir o valor direto. Mas se
 
 Se você estar se perguntando :
 
-  -Tudo bem , mas por qual motivo o tamanho da lista é dividido por 6 e somado a  1?
+-Tudo bem , mas por qual motivo o tamanho da lista é dividido por 6 e somado a  1?
 
-Divido por 6?
+-Divido por 6?
 
 Foi definido ter , no máximo, 6 linhas na grade por página.
 
-Somado a 1?
+-Somado a 1?
 
 Como a lista possui um tamanho n, poderiamos ter  n = 1. Logo, teriamos um valor que não possui uma parte inteira.
 
@@ -74,17 +74,17 @@ Ex:
         
 No exemplo anterior, garantimos que o builder vai criar, pelo menos, uma página para o PDF.
 
-Se o tamanho for 6?
+-Se o tamanho for 6?
 
 Ex:
 
 ( 6 / 6 ) = 1  
 
-  -Tudo certo, então?
+-Tudo certo, então?
 
-Não. Lembra da imagem no início? Nela só cabem 5 linhas na grade. Fica sobrando uma linha. 
+Não. Lembra da imagem no início? Nela só cabem 5 linhas na primeira página. Fica sobrando uma linha. 
 
-O que faremos? 
+-O que faremos? 
     
 ( 6 / 6 ) = 1
    
@@ -94,7 +94,7 @@ Agora fica claro que somando 1 ao resultado da divisão, garantimos que as linha
 
 
 # Preenchendo as páginas
-Agora que defimos como passar o número de páginas para o "PdfDocument.PageInfo.Builder()", vamos utilizá-lo para definir o números de iterações que termos na primeira estrutura de laço.
+Agora que defimos como passar o número de páginas para o "PdfDocument.PageInfo.Builder()", vamos utilizá-lo para definir o número de iterações que termos na primeira estrutura de laço.
 
       for (indexPageNumber in 0 until gridPageNumber step 1) {
             //set page information
@@ -122,7 +122,15 @@ Métodos:
 
      //Desenha linhas
      canvas.drawLine(start x, start y, stop x, stop y, paint)
+
      
+
+Tenha em mente que você desenhará dentro de um plano cartesiano.
+
+![image](https://github.com/ramonsatu/CustomPDF/assets/117767174/4679a71d-1368-4e05-b020-eb166d43789b)
+
+
+
 Dentro da nossa primeira estrutura condicional nos desenhamos o cabeçalho do PDF:
 
              //--------page-01-Header------------
@@ -185,7 +193,6 @@ No final da estrutura do laço principal você deve fechar cada página.
             //Encerrando a página que corresponde ao índice atual
             pdfDocument!!.finishPage(myPage)
         }
-
 # Definindo o Path
 Agora que já temos as páginas preenchidas , precisamos informar para instância do PDfDocument o caminho onde o nosso arquivo deve ser escrito.
 
