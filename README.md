@@ -98,19 +98,19 @@ Agora que defimos como passar o número de páginas para o "PdfDocument.PageInfo
 
       for (indexPageNumber in 0 until gridPageNumber step 1) {
             //set page information
-            val myPage: PdfDocument.Page = pdfDocument!!.startPage(pageInfo)
+            val myPage: PdfDocument.Page? = pdfDocument?.startPage(pageInfo)
             // creating a variable for canvas
-            val canvas = myPage.canvas
+            val canvas = myPage?.canvas
             ...
       }
 
 Perceba que no início de cada iteração, iniciamos "myPage" com a instância do PDFDocument que criamos e passamos as configurações da página.
            
-            val myPage: PdfDocument.Page = pdfDocument!!.startPage(pageInfo)
+            val myPage: PdfDocument.Page? = pdfDocument?.startPage(pageInfo)
 
 Logo em seguida temos acesso ao objeto canvas e aos métodos responsáveis por desenhar na tela.
 
-      val canvas = myPage.canvas
+      val canvas = myPage?.canvas
 
 Métodos:
 
@@ -171,9 +171,9 @@ No final da estrutura do laço principal você deve fechar cada página.
             for (indexPageNumber in 0 until gridPageNumber step 1) {
 
             //set page information
-            val myPage: PdfDocument.Page = pdfDocument!!.startPage(pageInfo)
+            val myPage: PdfDocument.Page? = pdfDocument?.startPage(pageInfo)
             // creating a variable for canvas
-            val canvas = myPage.canvas
+            val canvas = myPage?.canvas
 
             //--------page-01-Header------------
             if (indexPageNumber == 0) {
@@ -207,7 +207,7 @@ Agora que já temos as páginas preenchidas , precisamos informar para instânci
 
         try {
             withContext(Dispatchers.IO) {
-                pdfDocument!!.writeTo(FileOutputStream(filePDF))
+                pdfDocument?.writeTo(FileOutputStream(filePDF))
             }
         } catch (ex: IOException) {
             ex.printStackTrace()
@@ -228,13 +228,13 @@ Quando a operação do metódo "writeTo(FileOutputStream(filePDF))" acabar, deve
 
         try {
             withContext(Dispatchers.IO) {
-                pdfDocument!!.writeTo(FileOutputStream(filePDF))
+                pdfDocument?.writeTo(FileOutputStream(filePDF))
             }
         } catch (ex: IOException) {
             ex.printStackTrace()
         } 
 
-        pdfDocument!!.close()
+        pdfDocument?.close()
         pdfDocument = null
         this.paint = null
         this.line = null
