@@ -29,7 +29,7 @@ Depois de alocar esses recusos dentro de uma classe , você pode alterar alguns 
         line?.flags = Paint.ANTI_ALIAS_FLAG
         line?.strokeWidth = 2f
     }
-               ------ or------
+       // ----------------- or --------------------
        private suspend fun generatePDFWeekSubjects(
         context: Context,
         activity: AppCompatActivity,
